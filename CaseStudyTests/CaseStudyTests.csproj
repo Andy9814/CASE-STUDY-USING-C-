@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeModelTests.cs" />
+    <Compile Include="EmployeeViewModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +67,10 @@
     <ProjectReference Include="..\HelpdeskDAL\HelpdeskDAL.csproj">
       <Project>{48f1233a-ba06-49df-bfd4-cb44a55f36ea}</Project>
       <Name>HelpdeskDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelpDeskViewModel\HelpDeskViewModel.csproj">
+      <Project>{8c8ebc82-8dec-456a-a329-ff38aa9ad941}</Project>
+      <Name>HelpDeskViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

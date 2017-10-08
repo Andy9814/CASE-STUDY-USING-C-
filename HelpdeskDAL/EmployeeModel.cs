@@ -20,7 +20,7 @@ namespace HelpdeskDAL
             catch (Exception ex)
             {
                 Console.Write("problem in " + GetType().Name + MethodBase.GetCurrentMethod().Name + "  " + ex.Message);
-                    throw ex;
+                throw ex;
 
             }
             return selectedEmployee;
@@ -139,6 +139,27 @@ namespace HelpdeskDAL
             return EmployeesDeleted;
         }
 
+
+        public Employee getByLastName(string name)
+        {
+            Employee currentEmployee = null;
+            try
+            {
+              
+                HelpdeskContext ctx = new HelpdeskContext();
+
+                currentEmployee = ctx.Employees.FirstOrDefault(emp => emp.LastName == name);
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Problem in " + GetType().Name + " " + MethodBase.GetCurrentMethod().Name + " " + ex.Message);
+                throw ex;
+            }
+            return currentEmployee;
+
+        }
 
 
 

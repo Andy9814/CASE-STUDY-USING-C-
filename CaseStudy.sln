@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpdeskDAL", "HelpdeskDAL\HelpdeskDAL.csproj", "{48F1233A-BA06-49DF-BFD4-CB44A55F36EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaseStudyTests", "CaseStudyTests\CaseStudyTests.csproj", "{FACBD49F-0201-41B5-8F50-FC44343E4D8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpDeskViewModel", "HelpDeskViewModel\HelpDeskViewModel.csproj", "{8C8EBC82-8DEC-456A-A329-FF38AA9AD941}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpDeskWebsite", "HelpDeskWebsite\HelpDeskWebsite.csproj", "{0B062F0C-732D-4EAD-BDD5-B73E130F525A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{FACBD49F-0201-41B5-8F50-FC44343E4D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FACBD49F-0201-41B5-8F50-FC44343E4D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FACBD49F-0201-41B5-8F50-FC44343E4D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C8EBC82-8DEC-456A-A329-FF38AA9AD941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C8EBC82-8DEC-456A-A329-FF38AA9AD941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C8EBC82-8DEC-456A-A329-FF38AA9AD941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C8EBC82-8DEC-456A-A329-FF38AA9AD941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B062F0C-732D-4EAD-BDD5-B73E130F525A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B062F0C-732D-4EAD-BDD5-B73E130F525A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B062F0C-732D-4EAD-BDD5-B73E130F525A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B062F0C-732D-4EAD-BDD5-B73E130F525A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
