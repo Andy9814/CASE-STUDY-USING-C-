@@ -1,3 +1,5 @@
+﻿
+
 namespace HelpdeskDAL
 {
     using System;
@@ -7,7 +9,9 @@ namespace HelpdeskDAL
     using System.Data.Entity.Spatial;
 
     public partial class Problem
+
     {
+
         public int Id { get; set; }
 
         [StringLength(50)]
