@@ -16,10 +16,10 @@ namespace HelpDeskWebsite
         {
             try
             {
-                EmployeeViewModel vm = new EmployeeViewModel();
-                vm.Lastname = name;
-                vm.getByLastName();
-                return Ok(vm);
+                EmployeeViewModel emp = new EmployeeViewModel();
+                emp.Lastname = name;
+                emp.getByLastName();
+                return Ok(emp);
 
             }
             catch(Exception ex)

@@ -11,7 +11,7 @@ namespace HelpDeskViewModel
 {
     public class EmployeeViewModel
     {
-        public EmployeeModel _model = new EmployeeModel();
+        public EmployeeModel _model ;
         public string Title { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
@@ -28,6 +28,7 @@ namespace HelpDeskViewModel
 
         public EmployeeViewModel()
         {
+            _model = new EmployeeModel();
 
         }
 
