@@ -52,10 +52,14 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeEntity.cs" />
     <Compile Include="EmployeeModel.cs" />
     <Compile Include="HelpdeskContext.cs" />
+    <Compile Include="HelpdeskRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Problem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

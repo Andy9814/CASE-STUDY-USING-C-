@@ -4,18 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Data.Entity.Infrastructure;
 namespace HelpdeskDAL
+    
 {
     public class EmployeeModel
     {
-        public Employee GetByEmial(string name) {
-            Employee selectedEmployee = null;
+     
+            IRepository<Employee> repo;
+            public EmployeeModel()
+            {
+                repo = new HelpdeskRepository<Employee>();
+            }
+
+            public Employee GetByEmial(string name) {
+            List<Employee> selectedEmployee = null;
 
             try
             {
                 HelpdeskContext ctx = new HelpdeskContext();
 
-                selectedEmployee = ctx.Employees.FirstOrDefault(Emp => Emp.Email == name);
+                selectedEmployee = repo.GetByExpression(Emp => Emp.Email == name);
             }
             catch (Exception ex)
             {
@@ -23,18 +32,20 @@ namespace HelpdeskDAL
                 throw ex;
 
             }
-            return selectedEmployee;
+            return selectedEmployee.FirstOrDefault();
 
 
         }
 
+
+
         public Employee GetById(int id)
         {
-            Employee selectedEmployees = null;
+            List<Employee> selectedEmployees = null;
             try
             {
                 HelpdeskContext ctx = new HelpdeskContext();
-                selectedEmployees = ctx.Employees.FirstOrDefault(Emp => Emp.Id == id);
+                selectedEmployees = repo.GetByExpression(Emp => Emp.Id == id);
 
             }
             catch (Exception ex)
@@ -43,7 +54,7 @@ namespace HelpdeskDAL
                 throw ex;
 
             }
-            return selectedEmployees;
+            return selectedEmployees.FirstOrDefault();
         }
 
 
@@ -53,7 +64,7 @@ namespace HelpdeskDAL
             try
             {
                 HelpdeskContext ctx = new HelpdeskContext();
-                allEmployees = ctx.Employees.ToList();
+                allEmployees = repo.GetAll();
 
             }
             catch (Exception ex)
@@ -74,10 +85,11 @@ namespace HelpdeskDAL
         {
             try
             {
-                HelpdeskContext ctx = new HelpdeskContext();
+                //HelpdeskContext ctx = new HelpdeskContext();
 
-                ctx.Employees.Add(newEmployee);
-                ctx.SaveChanges();
+                //ctx.Employees.Add(newEmployee);
+                //ctx.SaveChanges();
+                repo.Add(newEmployee);
 
             }
             catch (Exception ex)
@@ -93,27 +105,30 @@ namespace HelpdeskDAL
 
 
 
-        public int Update(Employee updateEmployee)
+        public /*int*/ UpdateStatus Update(Employee updatedEmployee)
         {
-            int EmployeesUpdated = -1;
+            //int employeesUpdated = -1;
+            UpdateStatus opStatus = UpdateStatus.Failed;
+
+
             try
             {
-                HelpdeskContext ctx = new HelpdeskContext();
-                Employee currentEmployee = ctx.Employees.FirstOrDefault(stu => stu.Id == updateEmployee.Id);
-                ctx.Entry(currentEmployee).CurrentValues.SetValues(updateEmployee);
-
-                EmployeesUpdated = ctx.SaveChanges();
+                /* HelpdeskContext cty = new HelpdeskContext();
+                 Employee currentEmployee = cty.Employees.FirstOrDefault(emp => emp.Id == updatedEmployee.Id);
+                cty.Entry(currentEmployee).CurrentValues.SetValues(updatedEmployee);
+                employeesUpdated = cty.SaveChanges(); */
+                opStatus = repo.Update(updatedEmployee);
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Problem in " + GetType().Name + " " + MethodBase.GetCurrentMethod().Name + " " + ex.Message);
                 throw ex;
-
             }
-            return EmployeesUpdated;
-
+            return opStatus;
         }
+
+
 
 
 
@@ -122,12 +137,12 @@ namespace HelpdeskDAL
             int EmployeesDeleted = -1;
             try
             {
-                HelpdeskContext ctx = new HelpdeskContext();
-                Employee currentStudent = ctx.Employees.FirstOrDefault(Emp => Emp.Id == id);
-                ctx.Employees.Remove(currentStudent);
+                //HelpdeskContext ctx = new HelpdeskContext();
+                //Employee currentStudent = ctx.Employees.FirstOrDefault(Emp => Emp.Id == id);
+                //ctx.Employees.Remove(currentStudent);
 
 
-                EmployeesDeleted = ctx.SaveChanges();
+                EmployeesDeleted = repo.Delete(id);
 
             }
             catch (Exception ex)
@@ -142,13 +157,13 @@ namespace HelpdeskDAL
 
         public Employee getByLastName(string name)
         {
-            Employee currentEmployee = null;
+            List<Employee> currentEmployee = null;
             try
             {
               
-                HelpdeskContext ctx = new HelpdeskContext();
+               // HelpdeskContext ctx = new HelpdeskContext();
 
-                currentEmployee = ctx.Employees.FirstOrDefault(emp => emp.LastName == name);
+                currentEmployee = repo.GetByExpression(emp => emp.LastName == name);
 
 
             }
@@ -157,11 +172,34 @@ namespace HelpdeskDAL
                 Console.WriteLine("Problem in " + GetType().Name + " " + MethodBase.GetCurrentMethod().Name + " " + ex.Message);
                 throw ex;
             }
-            return currentEmployee;
+            return currentEmployee.FirstOrDefault();
 
         }
 
-
+        //public UpdateStatus UpdateForConcurrency(Employee updatedEmployee)
+        //{
+        //    UpdateStatus opStatus = UpdateStatus.Failed;
+        //    try
+        //    {
+        //        HelpdeskContext dbContext = new HelpdeskContext();
+        //        Employee currentEmployee = dbContext.Employees.FirstOrDefault(emp => emp.Id == updatedEmployee.Id);
+        //        dbContext.Entry(currentEmployee).OriginalValues["Timer"] = updatedEmployee.Timer;
+        //        dbContext.Entry(currentEmployee).CurrentValues.SetValues(updatedEmployee);
+        //        if (dbContext.SaveChanges() == 1)
+        //            opStatus = UpdateStatus.Ok;
+        //    }
+        //    catch (DbUpdateConcurrencyException dbx)
+        //    {
+        //        opStatus = UpdateStatus.Stale;
+        //        Console.WriteLine("Problem in " + GetType().Name + " " + MethodBase.GetCurrentMethod().Name + " " + dbx.Message);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Problem in " + GetType().Name + " " + MethodBase.GetCurrentMethod().Name + " " + ex.Message);
+        //        throw ex;
+        //    }
+        //    return opStatus;
+        //}
 
 
 

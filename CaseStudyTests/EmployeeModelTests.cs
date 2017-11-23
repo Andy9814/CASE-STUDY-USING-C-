@@ -59,17 +59,17 @@ namespace CaseStudyTests
         }
 
 
-        [TestMethod]
-        public void EmployeeModelUpdateShouldReturnNewId()
-        {
-            EmployeeModel model = new EmployeeModel();
-            Employee updateEmployee = model.GetByEmial("ts@abc.com");
-            updateEmployee.Email = "ts@xyz.com";
+        //[TestMethod]
+        //public void EmployeeModelUpdateShouldReturnNewId()
+        //{
+        //    EmployeeModel model = new EmployeeModel();
+        //    Employee updateEmployee = model.GetByEmial("ts@abc.com");
+        //    updateEmployee.Email = "ts@xyz.com";
 
-            int EmployeeUpdated = model.Update(updateEmployee);
-            Assert.IsTrue(EmployeeUpdated > 0);
+        //    int EmployeeUpdated = model.Update(updateEmployee);
+        //    Assert.IsTrue(EmployeeUpdated > 0);
 
-        }
+        //}
 
 
         public void EmployeeModelDeleteShouldReturnNewId()
@@ -82,10 +82,39 @@ namespace CaseStudyTests
 
         }
 
+        [TestMethod]
+        public void EmployeeModelUpdateTwiceShouldReturnStaleStatus()
+        {
+            //    EmployeeModel model = new EmployeeModel();
+            //    Employee updateEmployee1 = model.getByLastName("Span");
+            //    Employee updateEmployee2 = model.getByLastName("Span");
+            //    updateEmployee1.PhoneNo = "(555)555-6666";
+            //    if (model.Update(updateEmployee1) == UpdateStatus.Ok)
+            //    {
+            //        updateEmployee2.PhoneNo = "(555)555-7777";
+            //        Assert.IsTrue(model.Update(updateEmployee2) == UpdateStatus.Stale);
+            //    }
+            //    else
+            //        Assert.Fail();
+            //}
 
+            EmployeeModel model1 = new EmployeeModel();
+            EmployeeModel model2 = new EmployeeModel();
+
+            Employee updateEmployee1 = model1.getByLastName("Span");
+            Employee updateEmployee2 = model2.getByLastName("Span");
+            updateEmployee1.PhoneNo = "(555)555-6556";
+            if (model1.Update(updateEmployee1) == UpdateStatus.Ok)
+            {
+                updateEmployee2.PhoneNo = "(555)555-7777";
+                Assert.IsTrue(model2.Update(updateEmployee2) == UpdateStatus.Stale);
+            }
+            else
+                Assert.Fail();
+        }
 
 
     }
 
 
-}
+    }

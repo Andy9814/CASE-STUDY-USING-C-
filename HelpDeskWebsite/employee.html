@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Case 1</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Case#1</a>
+            <div class="col-xs-2"></div>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav" id="menu">
+                <li><a href="/Home.html">Home</a></li>
+                <li class="active"><a href="/employee.html">Employee</a></li>
+            </ul>
+        </div>
+    </nav>
+    <img src="logo2.png" class="img-rounded " alt="logo" height="311" width="151" style="top:0%;padding-top:9%"/>
+    <div class="panel-body" style="position:relative;">
+        <a href="employee.html#theModal" data-toggle="modal">Lookup Employee</a>
+    </div>
+    <div class="modal fade text-left" data-backup="static" id="theModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                    <h1>Employee Lookup</h1>
+                </div>
+                <div class="modal-body">
+                    <div style="top:5%;padding:5%">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                Employee Information
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-3" style="font-weight:bold">Title:</div>
+                                    <div class="col-xs-2" id="title"></div>
+                                    <div class="col-xs-2 text-right" style="font-weight:bold">First:</div>
+                                    <div class="col-xs-5" id="firstname"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3" style="font-weight:bold">Phone#:</div>
+                                    <div class="col-xs-8" id="phone"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3" style="font-weight:bold">Email:</div>
+                                    <div class="col-xs-8" id="email"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3" style="font-weight:bold">Surname:</div>
+                                    <div class="col-xs-8">
+                                        <input type="text" placeholder="enter last name" id="TextBoxLastname" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-center" style="padding:5%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" value="Find Employee" id="getbutton" />
+                    <div id="status" class="text-left" style="padding-top:5%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/employeelookup.js"></script>
+</body>
+</html>
