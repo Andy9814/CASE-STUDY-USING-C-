@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Add</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/employee.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Case #1</a>
+            <div class="col-xs-2"></div>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav" id="menu">
+                <li><a href="/home.html">Home</a></li>
+                <li class="active"><a href="/employeeadd.html" data-toggle="modal">Employee</a></li>
+                <li><a href="#" data-toggle="modal"> Department </a> </li>
+                <li><a href="#" data-toggle="modal"> Problem </a> </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="img" align="center">
+        <img src="logo2.png" class="img-rounded " alt="logo" height="311" width="151" style="top:0%;padding-top:9%;" />
+    </div>
+
+
+    <div class="container">
+        <div style="padding-top:15%;">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center" id="status" style="font-weight:bold;"> </div>
+                <div class="panel-body">
+                    <div id="employeeList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="theModal" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                    <div id="modaltitle"></div>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">
+                            Employee Information
+                        </div>
+                        <div class="panel-body" id="employee" data-id="" data-timer="">
+                            <div class=" row">
+                                <div class="col-xs-4"> <strong>Title:</strong> </div>
+                                <div class="col-xs-8"><input type="text" placeholder="enter title" id="TextBoxTitle" class="form-control" /></div>
+                            </div>
+                            <div class=" row">
+                                <div class="col-xs-4"> <strong>First:</strong></div>
+                                <div class="col-xs-8"><input type="text" placeholder="enter first name" id="TextBoxFirstname" class="form-control" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4"> <strong>Surname:</strong> </div>
+                                <div class="col-xs-8"> <input type="text" placeholder="enter last name" id="TextBoxLastname" class="form-control" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-4"><strong>Phone#:</strong></div>
+                                <div class="col-xs-8"><input type="text" placeholder="enter last name" id="TextBoxPhone" class="form-control" /> </div>
+                            </div>
+                            <div class="row">
+                                <div class=" col-xs-4"><strong>Email:</strong></div>
+                                <div class="col-xs-8"><input type="text" placeholder="enter last name" id="TextBoxEmail" class="form-control" />   </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" value="" id="actionbutton" class="btn btn-default" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/employeeadd.js"></script>
+</body>
+</html>

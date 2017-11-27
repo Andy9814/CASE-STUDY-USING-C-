@@ -66,6 +66,25 @@ namespace HelpDeskWebsite
             }
         }
 
-
+        [Route("api/employees")]
+        public IHttpActionResult Post(EmployeeViewModel emp)
+        {
+            try
+            {
+                emp.Add();
+                if (emp.Id > 0)
+                {
+                    return Ok("Employee " + emp.Lastname + " added!");
+                }
+                else
+                {
+                    return Ok("Employee " + emp.Lastname + " not added!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Creation failed - Contact Tech Support");
+            }
+        }
     }
 }

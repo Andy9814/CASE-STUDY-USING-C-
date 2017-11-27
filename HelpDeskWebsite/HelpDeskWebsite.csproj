@@ -89,6 +89,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="employee.html" />
+    <Content Include="employeeadd.html" />
     <Content Include="employeelist.html" />
     <Content Include="EmployeeLookUp.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -101,6 +102,7 @@
     <Content Include="menuexample.html" />
     <Content Include="modalExample.html" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\employeeadd.js" />
     <Content Include="Scripts\employeelist.js" />
     <Content Include="Scripts\employeeLookUp.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
