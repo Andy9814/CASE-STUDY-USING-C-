@@ -1,13 +1,14 @@
-﻿$(function () { //studentlist.js
+﻿$(function () { 
 
-    getAll(''); //first grab the data from the server
+    getAll(''); 
 
-    //click event handler for the student list
-    $('#employeeList').click(function (e) { //click on any row
+    //click event handler
+    $('#employeeList').click(function (e) { 
         if (!e) e = window.event;
         var Id = e.target.parentNode.id;
         if (Id === 'employeeList' || Id === '') {
-            Id = e.target.id; //clicked on row somewhere else
+            //clicked on row 
+            Id = e.target.id; 
         }
         var data = JSON.parse(localStorage.getItem('allemployees'));
         clearModalFields();
@@ -22,7 +23,7 @@
                 localStorage.setItem('Id', employee.Id);
                 localStorage.setItem('DepartmentId', employee.DepartmentId);
                 localStorage.setItem('Timer', employee.Timer);
-                return false; //breaks out of loop
+                return false; 
             } else {
                 $('#status').text("no employee found");
             }
@@ -51,7 +52,7 @@
             .fail(function (jqXHR, textStatus, errorThrown) {
                 errorRoutine(jqXHR);
             });
-        return false; //make sure to return false for click or REST calls 
+        return false; 
     });
 
     //build the list
@@ -73,7 +74,7 @@
                 '<span class="col-xs-4" id=employeelastname' + emp.Id + '" \>' + emp.Lastname + '</span>'
             );
             btn.appendTo(div);
-        }); //each
+        });
     }//buildStudentList
 
     // get all students
@@ -104,9 +105,9 @@
         localStorage.removeItem('Timer');
     }
 
-    //call ASP.Net WEB API server
+   
     function ajaxCall(type, url, data) {
-        return $.ajax({ //return the promise that '$.ajax'
+        return $.ajax({ 
             type: type,
             url: url,
             data: JSON.stringify(data),
@@ -118,7 +119,7 @@
 
     } //ajaxCall
 
-    function errorRoutine(jqXHR) { //common error 
+    function errorRoutine(jqXHR) { 
         if (jqXHR.responseJSON === null) {
             $('#status').text(jqXHR.responseText);
         }

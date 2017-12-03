@@ -7,7 +7,7 @@
         {
             if (data.Lastname !== 'not found')
             {
-                $('#email').text(data.Email);
+                $('#Email').text(data.Email);
                 $('#title').text(data.Title);
                 $('#firstname').text(data.Firstname);
                 $('#phone').text(data.Phoneno);
@@ -15,7 +15,7 @@
             } else
             {
                 $('#firstname').text('not found');
-                $('#email').text('');
+                $('#Email').text('');
                 $('#title').text('');
                 $('#phone').text('');
                 $('#status').text('no such Employee');

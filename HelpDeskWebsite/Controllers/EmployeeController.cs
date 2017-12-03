@@ -86,5 +86,29 @@ namespace HelpDeskWebsite
                 return BadRequest("Creation failed - Contact Tech Support");
             }
         }
+        
+        //delte function 
+        [Route("api/employees/{id}")]
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                EmployeeViewModel emp = new EmployeeViewModel();
+                emp.Id = id;
+
+                if (emp.Delete() == 1)
+                {
+                    return Ok("Employee deleted!");
+                }
+                else
+                {
+                    return Ok("Employee not deleted!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Delete failed - Contact Tech Support");
+            }
+        }
     }
 }

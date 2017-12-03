@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelpdeskDAL
 {
+    // create the update status
     public enum UpdateStatus
     {
         Ok = 1,

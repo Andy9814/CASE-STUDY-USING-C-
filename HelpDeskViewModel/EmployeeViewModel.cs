@@ -26,18 +26,19 @@ namespace HelpDeskViewModel
 
 
 
-
+        // create EmployeeViewModel
         public EmployeeViewModel()
         {
             _model = new EmployeeModel();
 
         }
 
+        // create getByLastName
         public void getByLastName()
         {
             try
             {
-                Employee emp = _model.getByLastName(Lastname);
+                Employee emp = _model.GetByLastname(Lastname);
                 Title = emp.Title;
                 Firstname = emp.FirstName;
                 Lastname = emp.LastName;
@@ -141,6 +142,21 @@ namespace HelpDeskViewModel
 
             }
 
+        }
+        //delete
+        public int Delete()
+        {
+            int employeesDeleted = -1;
+
+            try
+            {
+                employeesDeleted = _model.Delete(Id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Problem in " + MethodBase.GetCurrentMethod().Name + ex.Message);
+            }
+            return employeesDeleted;
         }
 
     }

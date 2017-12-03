@@ -10,21 +10,21 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:lightgray" >
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" >
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Case #1</a>
+            <a class="navbar-brand" href="#">Case Study #1</a>
             <div class="col-xs-2"></div>
         </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse navbar-ex1-collapse" style="background-color:chocolate">
             <ul class="nav navbar-nav" id="menu">
-                <li><a href="/home.html">Home</a></li>
-                <li class="active"><a href="/employeeadd.html" data-toggle="modal">Employee</a></li>
+                <li><a href="#"data-toggle="modal">Home</a></li>
+                <li class="active"><a href="employeeadd.html" data-toggle="modal" style="background-color:chocolate">Employee</a></li>
                 <li><a href="#" data-toggle="modal"> Department </a> </li>
                 <li><a href="#" data-toggle="modal"> Problem </a> </li>
             </ul>
@@ -40,9 +40,9 @@
     <div class="container">
         <div style="padding-top:15%;">
             <div class="panel panel-default">
-                <div class="panel-heading text-center" id="status" style="font-weight:bold;"> </div>
+                <div class="panel-heading text-center" id="status" style="font-weight:bold; background-color:burlywood"> </div>
                 <div class="panel-body">
-                    <div id="employeeList"></div>
+                    <div id="employeeList" style="background-color:burlywood"></div>
                 </div>
             </div>
         </div>
@@ -57,13 +57,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="panel panel-default">
-                        <div class="panel-heading text-center">
+                        <div class="panel-heading text-center" style="background-color:chocolate">
                             Employee Information
                         </div>
                         <div class="panel-body" id="employee" data-id="" data-timer="">
                             <div class=" row">
                                 <div class="col-xs-4"> <strong>Title:</strong> </div>
-                                <div class="col-xs-8"><input type="text" placeholder="enter title" id="TextBoxTitle" class="form-control" /></div>
+                                <div class="col-xs-8"><input type="text" placeholder="enter title" id="TextBoxTitle" class="form-control"/></div>
                             </div>
                             <div class=" row">
                                 <div class="col-xs-4"> <strong>First:</strong></div>

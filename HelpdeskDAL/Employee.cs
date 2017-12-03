@@ -8,7 +8,9 @@ namespace HelpdeskDAL
 
     public partial class Employee: EmployeeEntity
     {
-     //   public int Id { get; set; }
+
+        // remove ID since we have employee entitiy
+        //   public int Id { get; set; }
 
         [StringLength(4)]
         public string Title { get; set; }
@@ -31,6 +33,8 @@ namespace HelpdeskDAL
 
         public byte[] StaffPicture { get; set; }
 
+
+        // remove timer since we have employee entitiy
         //[Column(TypeName = "timestamp")]
         //[MaxLength(8)]
         //[Timestamp]

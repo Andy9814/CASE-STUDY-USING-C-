@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//added
+
 using System.Linq.Expressions;
 namespace HelpdeskDAL
 {
-    
+    // create the repo
         public interface IRepository<T>
         {
             List<T> GetAll();

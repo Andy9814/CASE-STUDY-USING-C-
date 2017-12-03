@@ -1,21 +1,21 @@
-﻿$(function () { 
-
+﻿$(function () {
+    //get grab the data 
     getAll(''); 
 
 
-    //click event handler
+    //click event handler 
     $('#employeeList').click(function (e) {  //click on any row
         if (!e) e = window.event;
         var Id = e.target.parentNode.id;
         if (Id === 'employeeList' || Id === '') {
-            //clicked on not on target 
-            Id = e.target.id; 
+             //clicked on row somehwere else
+            Id = e.target.id;
 
         }
         var data = JSON.parse(localStorage.getItem('allemployees'));
         clearModalFields();
 
-        //check for add or update/delete?
+        //checking we gonna do  an add or update/delete?
         if (Id === '0') {
             setupForAdd();
 
@@ -27,6 +27,9 @@
 
     });
 
+
+        // actionbutton
+
     $('#actionbutton').click(function () {
         if ($('#actionbutton').val() === 'Update') {
             update();
@@ -37,6 +40,18 @@
         }
         return false;
     }); //actionbutton click
+
+
+   // delete button 
+    $('#deletebutton').click(function () {
+        var deleteEmployee = confirm('really delete this employee?');
+        if (deleteEmployee) {
+            _delete();
+            return !deleteEmployee;
+        }
+        else
+            return deleteEmployee;
+    }); //deletebutton click
 
     function setupForUpdate(Id, data) {
         $('#actionbutton').val('Update');
@@ -53,6 +68,8 @@
                 localStorage.setItem('Id', employee.Id);
                 localStorage.setItem('DepartmentId', employee.DepartmentId);
                 localStorage.setItem('Timer', employee.Timer);
+                // departments
+                loadDepartmentDDL(employee.DepartmentId);
                 return false; 
 
             } else {
@@ -70,7 +87,8 @@
         $('#adeletebutton').hide();
         $('#theModal').modal('toggle');
     }
-    // create the buildemployeelist
+
+    //build the list
     function buildEmployeeList(data) {
         $('#employeeList').empty();
         div = $('<div class="list-group"><div>' +
@@ -117,10 +135,18 @@
 
             });
 
+        //departments
+        ajaxCall('Get', 'api/department', '')
+            .done(function (data) {
+                localStorage.setItem('alldepartments', JSON.stringify(data));
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                alert('error');
+            });
+
     } //getAll
 
 
-    // clearmodalfiels
     function clearModalFields() {
         $('#TextBoxTitle').val('');
         $('#TextBoxFirstname').val('');
@@ -131,6 +157,8 @@
         localStorage.removeItem('Id');
         localStorage.removeItem('DepartmentId');
         localStorage.removeItem('Timer');
+        //added for departments
+        loadDepartmentDDL(-1);
 
     }
 
@@ -141,7 +169,9 @@
         emp.Lastname = $('#TextBoxLastname').val();
         emp.Phoneno = $('#TextBoxPhone').val();
         emp.Email = $('#TextBoxEmail').val();
-        emp.DepartmentId = 100; // for department id
+        //emp.DepartmentId = 100; //we'll hardcode now, add a drop down later
+        //added for departments
+        emp.DepartmentId = $('#ddlDept').val();
 
 
         ajaxCall('Post', 'api/employees', emp)
@@ -154,11 +184,12 @@
 
         $('#theModal').modal('toggle');
         return false; 
+
     } //add
 
 
 
-    //update button 
+    //update button click event handler
 
     function update() {
         emp = new Object();
@@ -170,6 +201,8 @@
         emp.Id = localStorage.getItem('Id');
         emp.DepartmentId = localStorage.getItem('DepartmentId');
         emp.Timer = localStorage.getItem('Timer');
+        //added  departments
+        emp.DepartmentId = $('#ddlDept').val();
 
 
         ajaxCall('put', 'api/employees', emp)
@@ -187,6 +220,30 @@
 
     }//update
 
+    
+    function _delete() {
+        ajaxCall('Delete', 'api/employees/' + localStorage.getItem('Id'), '')
+            .done(function (data) {
+                getAll(data);
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                errorRoutine(jqXHR);
+            });
+        $('#theModal').modal('toggle');
+    } //_delete
+
+  
+    function loadDepartmentDDL(empdep) {
+        html = '';
+        $('#ddlDept').empty();
+        var alldepartments = JSON.parse(localStorage.getItem('alldepartments'));
+        $.each(alldepartments, function () {
+            html += '<option value="' + this['Id'] + '">' + this['Name'] + '</option>';
+        });
+        $('#ddlDept').append(html);
+        $('#ddlDept').val(empdep);
+    }//loadDepartmentDDL
+
 
     //ajax call
     function ajaxCall(type, url, data) {
@@ -200,6 +257,8 @@
 
         });
     } //ajaxCall
+
+
 
     function errorRoutine(jqXHR) { 
         if (jqXHR.responseJSON === null) {

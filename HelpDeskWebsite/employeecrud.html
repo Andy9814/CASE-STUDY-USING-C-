@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title> Employee List </title>
-    <meta charset="utf-8" />
+    <title>Employee CRUD</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link rel="icon" href="data:;base64, iVBORw0KGgo=">
+    <link href="Content/employee.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:lightgray">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -22,7 +24,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse" style="background-color:chocolate">
             <ul class="nav navbar-nav" id="menu">
                 <li><a href="#" data-toggle="modal">Home</a></li>
-                <li class="active"><a href="employeeadd.html" data-toggle="modal" style="background-color:chocolate">Employee</a></li>
+                <li class="active"><a href="/employeecrud.html" data-toggle="modal">Employee</a></li>
                 <li><a href="#" data-toggle="modal"> Department </a> </li>
                 <li><a href="#" data-toggle="modal"> Problem </a> </li>
             </ul>
@@ -46,61 +48,61 @@
         </div>
     </div>
 
-
-    <div class="modal fade text-center" data-backdrop="static" id="theModal">
+    <div class="modal fade" id="theModal" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">X</button>
-                    <h1> Update Employee </h1>
+                    <div id="modaltitle"></div>
                 </div>
                 <div class="modal-body">
-
-                    <div class=" panel panel-default">
+                    <div class="panel panel-default">
                         <div class="panel-heading text-center" style="background-color:chocolate">
                             Employee Information
                         </div>
-                        <div class=" panel-body" id="employee" data-id="" data-timer="">
+                        <div class="panel-body" id="employee" data-id="" data-timer="">
                             <div class=" row">
                                 <div class="col-xs-4"> <strong>Title:</strong> </div>
                                 <div class="col-xs-8"><input type="text" placeholder="enter title" id="TextBoxTitle" class="form-control" /></div>
                             </div>
                             <div class=" row">
                                 <div class="col-xs-4"> <strong>First:</strong></div>
-                                <div class="col-xs-8"><input type="text" placeholder="enter title" id="TextBoxFirstname" class="form-control" /></div>
+                                <div class="col-xs-8"><input type="text" placeholder="enter first name" id="TextBoxFirstname" class="form-control" /></div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-4"> <strong>Surname:</strong> </div>
-                                <div class="col-xs-8"> <input type="text" placeholder="enter title" id="TextBoxLastname" class="form-control" /></div>
+                                <div class="col-xs-8"> <input type="text" placeholder="enter last name" id="TextBoxLastname" class="form-control" /></div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-4"><strong>Phone#:</strong></div>
-                                <div class="col-xs-8"><input type="text" placeholder="enter title" id="TextBoxPhone" class="form-control" /> </div>
+                                <div class="col-xs-8"><input type="text" placeholder="enter last name" id="TextBoxPhone" class="form-control" /> </div>
                             </div>
                             <div class="row">
                                 <div class=" col-xs-4"><strong>Email:</strong></div>
-                                <div class="col-xs-8" id="email"> <input type="text" placeholder="enter title" id="TextBoxEmail" class="form-control" />   </div>
+                                <div class="col-xs-8"><input type="text" placeholder="enter last name" id="TextBoxEmail" class="form-control" />   </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-xs-4"><strong> Department: </strong></div>
+                                <div class="col-xs-8">
+                                    <select id="ddlDept" name="ddlDept" class="form-control"></select>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="panel-footer" style="color:transparent"> <br> </div>
+                        <div class="panel-footer">&nbsp;</div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" value="Update" id="empupdbutton" class="btn btn-default" />
-                    <div id="status" class="text-left" style="padding-top:5%;color:blue;"></div>
+                    <input type="button" value="" id="actionbutton" class="btn btn-default" />
+                    <input type="button" value="Delete" id="deletebutton" class="btn btn-danger" />
+
                 </div>
             </div>
-
         </div>
     </div>
-
-
     <script src="Scripts/jquery-3.2.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/employeelist.js"></script>
+    <script src="Scripts/employeecrud.js"></script>
 </body>
 </html>
