@@ -89,7 +89,7 @@
     }
 
     //build the list
-    function buildEmployeeList(data) {
+    function buildEmployeeList(data, allemployees) {
         $('#employeeList').empty();
         div = $('<div class="list-group"><div>' +
             '<span class="col-xs-4 h3">Title</span>' +
@@ -97,7 +97,14 @@
             '<span class="col-xs-4 h3">Last</span>' +
             '</div>');
         div.appendTo($('#employeeList'))
-        localStorage.setItem('allemployees', JSON.stringify(data));
+
+
+        if (allemployees) {
+            localStorage.setItem('allemployees', JSON.stringify(data));
+        }
+
+
+      
         btn = $('<button class="list-group-item" id="0">...Click to add employee</button>');
         btn.appendTo(div);
 
@@ -123,7 +130,7 @@
 
         ajaxCall('Get', 'api/employees', '')
             .done(function (data) {
-                buildEmployeeList(data);
+                buildEmployeeList(data,true);
                 if (msg === '')
                     $('#status').text('Employees loaded');
                 else
@@ -244,6 +251,24 @@
         $('#ddlDept').val(empdep);
     }//loadDepartmentDDL
 
+    $("#srch").keyup(function () {
+        filterData();
+
+    });
+
+
+    function filterData() {
+        filteredData = [];
+        allData = JSON.parse(localStorage.getItem('allemployees'));
+
+        $.each(allData, function (n, i) {
+            if (~i.Lastname.indexOf($("#srch").val())) {
+                filteredData.push(i);
+            }
+        })
+
+        buildEmployeeList(filteredData, false);
+    }//fillterdata
 
     //ajax call
     function ajaxCall(type, url, data) {
