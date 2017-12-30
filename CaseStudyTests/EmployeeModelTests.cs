@@ -123,8 +123,17 @@ namespace CaseStudyTests
                 Assert.Fail();
         }
 
+        [TestMethod]
+        public void LoadPicsShouldReturnTrue()
+        {
+            DALUtil util = new DALUtil();
+            Assert.IsTrue(util.AddEmployeePicsToDb ());
+        }
+
+
+
 
     }
 
 
-    }
+}

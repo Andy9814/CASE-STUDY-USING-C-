@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DALUtil.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="DepartmentModel.cs" />
     <Compile Include="Employee.cs" />

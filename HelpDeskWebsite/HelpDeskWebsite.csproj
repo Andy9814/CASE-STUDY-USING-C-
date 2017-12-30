@@ -101,6 +101,7 @@
     <Content Include="employeecrud.html" />
     <Content Include="employeelist.html" />
     <Content Include="EmployeeLookUp.html" />
+    <Content Include="employeeupdatev2.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -117,6 +118,7 @@
     <Content Include="Scripts\employeelist.js" />
     <Content Include="Scripts\employeeLookUp.js" />
     <Content Include="Scripts\employeeupdate.js" />
+    <Content Include="Scripts\employeeupdatev2.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
